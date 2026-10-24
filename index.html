@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Creaweb Chach App</title>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<style>
+  body{background:#080d1c;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  .blobs::before,.blobs::after{content:"";position:fixed;border-radius:9999px;filter:blur(100px);z-index:-1}
+  .blobs::before{width:520px;height:520px;background:#4f46e5;top:-140px;left:-140px;opacity:.55}
+  .blobs::after{width:560px;height:560px;background:#0891b2;bottom:-180px;right:-160px;opacity:.45}
+  .glass{background:rgba(255,255,255,.07);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.16);box-shadow:0 8px 32px rgba(0,0,0,.35)}
+  .lift{transition:.25s}
+  .lift:hover{background:rgba(255,255,255,.13);transform:translateY(-4px);border-color:rgba(255,255,255,.35)}
+  .fade{animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .ic{width:1.25em;height:1.25em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.6rem 1.2rem;border-radius:.5rem;font-weight:600;transition:.2s;cursor:pointer}
+  .btn-primary{background:#0d6efd;color:#fff;border:1px solid #0d6efd}
+  .btn-primary:hover{background:#0b5ed7}
+  .btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+  .btn-outline:hover{background:rgba(255,255,255,.15)}
+  .btn-info{background:#0dcaf0;color:#04202a;border:1px solid #0dcaf0}
+  .btn-info:hover{background:#31d2f2}
+  .form-control{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:.5rem;padding:.65rem 1rem;width:100%;outline:none}
+  .form-control::placeholder{color:rgba(255,255,255,.5)}
+  .form-control:focus{border-color:#6ea8fe;box-shadow:0 0 0 .25rem rgba(13,110,253,.35)}
+  .nav-link{color:rgba(255,255,255,.7);padding:.5rem .75rem}
+  .nav-link:hover{color:#fff}
+</style>
+</head>
+<body class="blobs min-h-screen text-white flex flex-col">
+
+<!-- NAVBAR -->
+<nav class="glass sticky top-0 z-30 rounded-none border-x-0 border-t-0">
+  <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-3 font-bold text-lg" id="brand">
+      <img src="logo-blanco.png" alt="Logo Creaweb Chach" class="h-10 w-auto">
+      <span>Creaweb Chach App</span>
+    </a>
+    <div class="hidden sm:flex items-center text-sm">
+      <a class="nav-link" id="navHome" href="#">Inicio</a>
+      <a class="nav-link" href="#" id="navTpl">Plantillas</a>
+      <button class="btn btn-outline !py-1.5 ml-2 text-sm" id="navContact"><i data-i="mail"></i>Contacto</button>
+    </div>
+    <button id="burger" class="sm:hidden btn btn-outline !p-2" aria-label="Abrir menú" aria-expanded="false">
+      <span id="burgerOpen"><i data-i="menu"></i></span>
+      <span id="burgerClose" class="hidden"><i data-i="x"></i></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden sm:hidden border-t border-white/10 px-5 py-3 flex-col gap-1 text-base">
+    <a class="nav-link flex items-center gap-3 !py-3" id="mHome" href="#"><i data-i="home"></i>Inicio</a>
+    <a class="nav-link flex items-center gap-3 !py-3" id="mTpl" href="#"><i data-i="layout"></i>Plantillas</a>
+    <button class="btn btn-primary mt-2" id="mContact"><i data-i="mail"></i>Contacto</button>
+  </div>
+</nav>
+
+<main class="flex-1 max-w-6xl w-full mx-auto px-5 py-12">
+
+  <!-- PASO 1 -->
+  <section id="step1" class="fade">
+    <div class="text-center max-w-3xl mx-auto">
+      <span class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-sm text-cyan-200"><i data-i="sparkles"></i>Crea tu sitio web en minutos</span>
+      <h1 class="mt-5 text-4xl md:text-6xl font-extrabold leading-tight">Bienvenido a <span class="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Creaweb Chach App</span></h1>
+      <p class="mt-4 text-lg text-white/70">Elige cómo quieres empezar. Puedes partir de una plantilla profesional o diseñar todo a tu manera.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mt-12">
+      <!-- card plantilla -->
+      <div class="glass lift rounded-2xl overflow-hidden flex flex-col">
+        <div class="px-6 py-3 border-b border-white/10 flex items-center justify-between text-sm">
+          <span class="text-white/60">Opción 1</span>
+          <span class="bg-emerald-400/20 text-emerald-300 rounded-full px-3 py-0.5 text-xs font-semibold">Recomendado</span>
+        </div>
+        <div class="p-7 flex-1">
+          <div class="w-14 h-14 rounded-xl bg-[#0d6efd]/25 text-blue-300 grid place-items-center text-3xl mb-4"><i data-i="layout"></i></div>
+          <h2 class="text-2xl font-bold">Usar una plantilla</h2>
+          <p class="mt-2 text-white/70">Elige tu rubro y selecciona un diseño listo para personalizar con tu marca.</p>
+        </div>
+        <div class="px-7 pb-7"><button id="btnTpl" class="btn btn-primary w-full">Elegir plantilla<i data-i="arrow-right"></i></button></div>
+      </div>
+
+      <!-- card desde 0 -->
+      <div class="glass lift rounded-2xl overflow-hidden flex flex-col">
+        <div class="px-6 py-3 border-b border-white/10 flex items-center justify-between text-sm">
+          <span class="text-white/60">Opción 2</span>
+          <span class="bg-cyan-400/20 text-cyan-300 rounded-full px-3 py-0.5 text-xs font-semibold">Personalizado</span>
+        </div>
+        <div class="p-7 flex-1">
+          <div class="w-14 h-14 rounded-xl bg-cyan-400/20 text-cyan-300 grid place-items-center text-3xl mb-4"><i data-i="pen"></i></div>
+          <h2 class="text-2xl font-bold">Crear diseño propio desde 0</h2>
+          <p class="mt-2 text-white/70">Empieza con un lienzo en blanco y construye una web totalmente a tu medida.</p>
+        </div>
+        <div class="px-7 pb-7"><button id="btnScratch" class="btn btn-info w-full">Empezar desde cero<i data-i="arrow-right"></i></button></div>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto mt-10 text-sm">
+      <div class="glass rounded-xl p-4 flex items-center gap-3"><span class="text-blue-300 text-2xl"><i data-i="zap"></i></span>Rápido y fácil de usar</div>
+      <div class="glass rounded-xl p-4 flex items-center gap-3"><span class="text-blue-300 text-2xl"><i data-i="phone"></i></span>Diseño adaptable a móvil</div>
+      <div class="glass rounded-xl p-4 flex items-center gap-3"><span class="text-blue-300 text-2xl"><i data-i="shield"></i></span>Seguro y confiable</div>
+    </div>
+  </section>
+
+  <!-- PASO 2 -->
+  <section id="step2" class="hidden">
+    <nav class="text-sm mb-6 flex items-center gap-2 text-white/60">
+      <a href="#" id="crumbHome" class="hover:text-white">Inicio</a><span>/</span><span class="text-white">Plantillas</span>
+    </nav>
+
+    <div class="max-w-2xl mb-8">
+      <h2 class="text-3xl md:text-4xl font-extrabold">Elige tu rubro</h2>
+      <p class="mt-2 text-white/70">Selecciona el tipo de negocio para ver las plantillas disponibles.</p>
+    </div>
+
+    <div class="flex max-w-xl mb-8">
+      <span class="glass rounded-l-lg px-4 grid place-items-center border-r-0"><i data-i="search"></i></span>
+      <input id="search" type="search" placeholder="Buscar rubro (ej. restaurante, clínica...)" class="form-control !rounded-l-none">
+    </div>
+
+    <div id="grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+    <div id="empty" class="hidden text-center text-white/70 mt-6">No encontramos ese rubro.</div>
+
+    <div class="glass rounded-2xl mt-10 p-6 flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <span class="w-12 h-12 rounded-xl bg-cyan-400/20 text-cyan-300 grid place-items-center text-2xl"><i data-i="help"></i></span>
+        <div><div class="font-bold">¿No aparece tu rubro?</div><div class="text-sm text-white/70">Cuéntanos tu tipo de negocio y creamos una plantilla para ti.</div></div>
+      </div>
+      <button id="btnMissing" class="btn btn-primary"><i data-i="mail"></i>Escríbenos</button>
+    </div>
+  </section>
+</main>
+
+<footer class="glass rounded-none border-x-0 border-b-0 text-center text-sm text-white/60 py-6 flex flex-col items-center gap-3">
+  <img src="logo-blanco.png" alt="Logo" class="h-10 w-auto opacity-80">
+  <span>© 2026 Creaweb Chach App · Todos los derechos reservados</span>
+</footer>
+
+<!-- MODAL -->
+<div id="modal" class="hidden fixed inset-0 z-40 grid place-items-center p-4 bg-black/60 backdrop-blur-sm">
+  <form id="form" class="glass rounded-2xl w-full max-w-md bg-slate-900/70 overflow-hidden">
+    <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between">
+      <h3 class="text-xl font-bold">Cuéntanos tu rubro</h3>
+      <button type="button" id="closeModal" class="text-white/70 hover:text-white text-xl"><i data-i="x"></i></button>
+    </div>
+    <div class="p-6 space-y-3">
+      <p class="text-sm text-white/70">Te avisaremos cuando tengamos plantillas para ti.</p>
+      <input type="hidden" name="_subject" value="Nuevo rubro solicitado - Creaweb Chach App">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none">
+      <input name="nombre" required placeholder="Tu nombre" class="form-control">
+      <input type="email" name="email" required placeholder="Tu correo electrónico" class="form-control">
+      <input type="tel" name="whatsapp" placeholder="WhatsApp (opcional)" class="form-control">
+      <input name="rubro" required placeholder="¿Cuál es tu rubro o tipo de empresa?" class="form-control">
+      <textarea name="mensaje" rows="3" placeholder="Mensaje (opcional)" class="form-control"></textarea>
+      <p id="formError" class="hidden text-sm text-red-300"></p>
+    </div>
+    <div class="px-6 py-4 border-t border-white/10 flex justify-end gap-2">
+      <button type="button" id="cancelModal" class="btn btn-outline">Cancelar</button>
+      <button type="submit" id="submitBtn" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</div>
+
+<!-- TOAST -->
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass rounded-xl px-5 py-3 text-sm bg-slate-900/80 items-center gap-2"></div>
+
+<script>
+/* ============ CONFIGURACIÓN: PON AQUÍ TUS ENLACES ============ */
+const LINKS = {
+  scratch: "",        // Enlace de "Crear diseño propio desde 0"
+  formEndpoint: "https://formspree.io/f/xrengvqb"   // Formspree: los envíos llegan a tu correo
+};
+
+// icon = nombre del icono (ver ICONS). url vacía = "Próximamente"
+const RUBROS = [
+  {n:"Restaurante",icon:"utensils",url:""},
+  {n:"Cafetería y panadería",icon:"coffee",url:""},
+  {n:"Tienda de ropa",icon:"shirt",url:""},
+  {n:"Salón de belleza",icon:"scissors",url:""},
+  {n:"Clínica y salud",icon:"heart",url:""},
+  {n:"Abogados",icon:"scale",url:""},
+  {n:"Inmobiliaria",icon:"home",url:""},
+  {n:"Gimnasio",icon:"activity",url:""},
+  {n:"Hotel y turismo",icon:"bed",url:""},
+  {n:"Educación",icon:"cap",url:""},
+  {n:"Tecnología",icon:"laptop",url:""},
+  {n:"Fotografía",icon:"camera",url:""},
+  {n:"Construcción",icon:"building",url:""},
+  {n:"Automotriz",icon:"car",url:""},
+  {n:"Eventos",icon:"sparkles",url:""},
+  {n:"Ferretería",icon:"wrench",url:""},
+  {n:"Contabilidad",icon:"calculator",url:""},
+  {n:"Auditoría",icon:"clipboard",url:""},
+  {n:"Barbería",icon:"barber",url:"barberweb.chach.app"},
+  {n:"Tours y viajes",icon:"compass",url:""},
+  {n:"Car wash",icon:"droplets",url:""},
+  {n:"Lavandería",icon:"washer",url:""},
+  {n:"Veterinaria",icon:"paw",url:""},
+  {n:"Farmacia",icon:"pill",url:""},
+  {n:"Transporte y logística",icon:"truck",url:""},
+  {n:"Tienda y minimarket",icon:"store",url:""}
+];
+/* ================================================================ */
+
+const ICONS = {
+  rocket:"M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09zM12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2zM9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5",
+  mail:"M22 7l-10 6L2 7M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z",
+  sparkles:"M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96l-6.14 1.58a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z",
+  layout:"M3 3h18v6H3zM3 13h8v8H3zM15 13h6v8h-6z",
+  pen:"M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z",
+  "arrow-right":"M5 12h14M12 5l7 7-7 7",
+  zap:"M13 2 3 14h9l-1 8 10-12h-9z",
+  phone:"M7 2h10a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM12 18h.01",
+  shield:"M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z",
+  search:"m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
+  help:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01",
+  x:"M18 6 6 18M6 6l12 12",
+  info:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM12 16v-4M12 8h.01",
+  utensils:"M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3zm0 0v7",
+  coffee:"M10 2v2M14 2v2M6 2v2M16 8a1 1 0 0 1 1 1v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9a1 1 0 0 1 1-1h14a4 4 0 1 1 0 8h-1",
+  shirt:"M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z",
+  scissors:"M6 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12",
+  heart:"M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z",
+  scale:"m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM2 16l3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1zM7 21h10M12 3v18M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2",
+  home:"M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8M3 10a2 2 0 0 1 .71-1.53l7-6a2 2 0 0 1 2.58 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z",
+  activity:"M22 12h-4l-3 9L9 3l-3 9H2",
+  bed:"M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9",
+  cap:"M21.42 10.92a1 1 0 0 0-.02-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0zM22 10v6M6 12.5V16a6 3 0 0 0 12 0v-3.5",
+  laptop:"M20 16V7a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v9m16 0H4m16 0 1.28 2.55a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45L4 16",
+  camera:"M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
+  building:"M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18zM6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4",
+  car:"M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2M7 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zM15 17a2 2 0 1 0 4 0 2 2 0 0 0-4 0zM9 17h6",
+  menu:"M4 6h16M4 12h16M4 18h16",
+  calculator:"M4 2h16a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zM8 6h8M16 14v4M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01",
+  clipboard:"M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2M9 2h6a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM9 14l2 2 4-4",
+  barber:"M8 2h8v3H8zM8 19h8v3H8zM9 5h6v14H9zM9 9l6-3M9 14l6-3M9 18l6-3",
+  compass:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20zM16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36z",
+  droplets:"M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05zM12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97",
+  washer:"M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM3 8h18M7 5h.01M11 5h.01M12 20a5 5 0 1 0 0-10 5 5 0 0 0 0 10z",
+  paw:"M11 4.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM17 4.5a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM21 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM7 10a2 2 0 1 1-4 0 2 2 0 0 1 4 0zM12 12c-3 0-5.5 3-5.5 5.5 0 1.7 1.3 2.5 2.7 2.5 1 0 1.8-.5 2.8-.5s1.8.5 2.8.5c1.4 0 2.7-.8 2.7-2.5C17.5 15 15 12 12 12z",
+  pill:"m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7zM8.5 8.5l7 7",
+  truck:"M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2M15 18H9M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14M7 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM17 20a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",
+  store:"M3 9l1-5h16l1 5M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0M5 21V12M19 21V12M3 21h18M9 21v-6h6v6",
+  wrench:"M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"
+};
+function icon(name){
+  return `<svg class="ic" viewBox="0 0 24 24"><path d="${ICONS[name]||ICONS.info}"/></svg>`;
+}
+function paintIcons(root=document){
+  root.querySelectorAll("i[data-i]").forEach(el=>{ el.outerHTML = icon(el.dataset.i); });
+}
+
+const $ = s => document.querySelector(s);
+const norm = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+
+function toast(msg){
+  const t = $("#toast"); t.innerHTML = icon("info") + `<span>${msg}</span>`;
+  t.classList.remove("hidden"); t.classList.add("flex");
+  clearTimeout(toast.id); toast.id = setTimeout(()=>{t.classList.add("hidden");t.classList.remove("flex")},2800);
+}
+function go(url){
+  if(url) window.location.href = url;
+  else toast("Estamos trabajando en ello, próximamente disponible");
+}
+function show(n){
+  $("#step1").classList.toggle("hidden", n!==1);
+  $("#step2").classList.toggle("hidden", n!==2);
+  (n===1?$("#step1"):$("#step2")).classList.add("fade");
+  if(n===2) render($("#search").value);
+}
+function render(q=""){
+  const list = RUBROS.filter(r => norm(r.n).includes(norm(q)));
+  $("#grid").innerHTML = "";
+  list.forEach(r=>{
+    const ready = !!r.url;
+    const b = document.createElement("button");
+    b.className = "glass lift rounded-2xl p-5 text-left flex flex-col gap-3";
+    b.innerHTML = `
+      <span class="w-12 h-12 rounded-xl bg-[#0d6efd]/25 text-blue-300 grid place-items-center text-2xl">${icon(r.icon)}</span>
+      <span class="font-semibold leading-tight">${r.n}</span>
+      <span class="text-xs font-semibold rounded-full px-2.5 py-0.5 w-fit ${ready?"bg-emerald-400/20 text-emerald-300":"bg-amber-400/20 text-amber-300"}">${ready?"Disponible":"Próximamente"}</span>`;
+    b.onclick = ()=>go(r.url);
+    $("#grid").appendChild(b);
+  });
+  $("#empty").classList.toggle("hidden", list.length>0);
+}
+
+paintIcons();
+$("#btnTpl").onclick = ()=>show(2);
+$("#navTpl").onclick = e=>{e.preventDefault();show(2)};
+$("#navHome").onclick = $("#crumbHome").onclick = $("#brand").onclick = e=>{e.preventDefault();show(1)};
+
+// Menú hamburguesa (móvil)
+const mm = $("#mobileMenu");
+function setMenu(open){
+  mm.classList.toggle("hidden", !open);
+  mm.classList.toggle("flex", open);
+  $("#burgerOpen").classList.toggle("hidden", open);
+  $("#burgerClose").classList.toggle("hidden", !open);
+  $("#burger").setAttribute("aria-expanded", open);
+}
+$("#burger").onclick = ()=>setMenu(mm.classList.contains("hidden"));
+$("#mHome").onclick = e=>{e.preventDefault();show(1);setMenu(false)};
+$("#mTpl").onclick = e=>{e.preventDefault();show(2);setMenu(false)};
+$("#mContact").onclick = ()=>{setMenu(false);openM()};
+$("#btnScratch").onclick = ()=>go(LINKS.scratch);
+$("#search").oninput = e=>render(e.target.value);
+
+const modal = $("#modal");
+const openM = ()=>modal.classList.remove("hidden");
+const closeM = ()=>modal.classList.add("hidden");
+$("#btnMissing").onclick = $("#navContact").onclick = openM;
+$("#closeModal").onclick = $("#cancelModal").onclick = closeM;
+modal.onclick = e=>{ if(e.target===modal) closeM(); };
+
+$("#form").onsubmit = async e=>{
+  e.preventDefault();
+  const form = e.target, btn = $("#submitBtn"), err = $("#formError");
+  err.classList.add("hidden");
+  btn.disabled = true; btn.textContent = "Enviando...";
+  try{
+    const res = await fetch(LINKS.formEndpoint,{
+      method:"POST",
+      body:new FormData(form),
+      headers:{Accept:"application/json"}
+    });
+    if(res.ok){
+      toast("¡Gracias! Te contactaremos pronto");
+      form.reset(); closeM();
+    }else{
+      const json = await res.json().catch(()=>({}));
+      err.textContent = json.errors ? json.errors.map(x=>x.message).join(", ") : "No se pudo enviar, intenta de nuevo.";
+      err.classList.remove("hidden");
+    }
+  }catch(_){
+    err.textContent = "Error de conexión, intenta de nuevo.";
+    err.classList.remove("hidden");
+  }finally{
+    btn.disabled = false; btn.textContent = "Enviar";
+  }
+};
+</script>
+</body>
+</html>
