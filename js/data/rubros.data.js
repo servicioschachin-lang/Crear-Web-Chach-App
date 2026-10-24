@@ -7,15 +7,15 @@
   root.Creaweb = root.Creaweb || {};
 
   root.Creaweb.RUBROS_DATA = Object.freeze([
-    { n: "Restaurante", icon: "utensils", url: "" },
-    { n: "Cafetería y panadería", icon: "coffee", url: "" },
-    { n: "Tienda de ropa", icon: "shirt", url: "" },
+    { n: "Restaurante", icon: "utensils", url: "https://restarweb.chach.app" },
+    { n: "Cafetería y panadería", icon: "coffee", url: "https://cofweb.chach.app" },
+    { n: "Tienda de ropa", icon: "shirt", url: "https://ecomerweb.chach.app" },
     { n: "Salón de belleza", icon: "scissors", url: "https://spaweb.chach.app" },
-    { n: "Clínica y salud", icon: "heart", url: "" },
-    { n: "Abogados", icon: "scale", url: "" },
-    { n: "Inmobiliaria", icon: "home", url: "" },
+    { n: "Clínica y salud", icon: "heart", url: "https://clinicweb.chach.app" },
+    { n: "Abogados", icon: "scale", url: "https://creaweb.chach.app" },
+    { n: "Inmobiliaria", icon: "home", url: "https://inmoweb.chach.app" },
     { n: "Gimnasio", icon: "activity", url: "" },
-    { n: "Hotel y turismo", icon: "bed", url: "" },
+    { n: "Hotel y turismo", icon: "bed", url: "https://hospedweb.chach.app" },
     { n: "Educación", icon: "cap", url: "" },
     { n: "Tecnología", icon: "laptop", url: "" },
     { n: "Fotografía", icon: "camera", url: "" },
