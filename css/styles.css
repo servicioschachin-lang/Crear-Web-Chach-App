@@ -180,3 +180,28 @@ body {
 .nav-link:hover {
   color: #ffffff;
 }
+
+/* Live Preview Modal & Device Frame Styles */
+#previewFrameContainer {
+  transition: max-width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              width 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: max-width, width;
+}
+
+.device-mobile {
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8),
+              0 0 0 1px rgba(255, 255, 255, 0.12),
+              0 0 40px rgba(13, 110, 253, 0.15) !important;
+}
+
+.device-tablet {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7),
+              0 0 0 1px rgba(255, 255, 255, 0.12),
+              0 0 30px rgba(13, 110, 253, 0.1) !important;
+}
+
+#previewIframe {
+  background-color: #ffffff;
+  display: block;
+}

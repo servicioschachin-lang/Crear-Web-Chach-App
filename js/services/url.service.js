@@ -75,6 +75,45 @@
 
       return true;
     }
+
+    /**
+     * Extrae un nombre de dominio amigable para mostrar en badges o títulos (ej: barberweb.chach.app)
+     * @param {string} rawUrl
+     * @returns {string}
+     */
+    static extractDomain(rawUrl) {
+      if (!rawUrl || typeof rawUrl !== 'string') return '';
+      try {
+        const normalized = this.normalize(rawUrl);
+        const urlObj = new URL(normalized);
+        return urlObj.hostname || rawUrl;
+      } catch (e) {
+        return rawUrl.replace(/^https?:\/\//i, '').split('/')[0];
+      }
+    }
+
+    /**
+     * Obtiene la URL óptima para el iframe de vista previa.
+     * En caso de entorno local file:///, resuelve a la plantilla local si existe.
+     * @param {string} rawUrl
+     * @returns {string}
+     */
+    static getPreviewUrl(rawUrl) {
+      const normalized = this.normalize(rawUrl);
+      if (!normalized) return '';
+
+      // Si se ejecuta en local (protocolo file://), usar ruta relativa local si coincide
+      if (typeof window !== 'undefined' && window.location && window.location.protocol === 'file:') {
+        if (/barberweb/i.test(normalized)) {
+          return './Barberweb/index.html';
+        }
+        if (/spaweb/i.test(normalized)) {
+          return './Spaweb/index.html';
+        }
+      }
+
+      return normalized;
+    }
   }
 
   root.Creaweb.UrlService = UrlService;

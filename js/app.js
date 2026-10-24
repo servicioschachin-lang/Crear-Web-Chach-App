@@ -20,6 +20,7 @@
     FormService,
     CatalogView,
     ModalController,
+    PreviewModalController,
     NavigationController
   } = root.Creaweb || {};
 
@@ -48,8 +49,34 @@
         gridElement: gridEl,
         emptyElement: emptyEl,
         iconRegistry: IconRegistry,
-        onSelect: (rubro) => this.handleRubroSelect(rubro)
+        onSelect: (rubro) => this.handleRubroSelect(rubro),
+        onPreview: (rubro) => this.handleRubroPreview(rubro)
       });
+
+      // 4. Inicializar controlador del modal de vista previa interactiva (SRP / DIP)
+      if (PreviewModalController) {
+        this.components.previewModal = new PreviewModalController({
+          modalElement: document.getElementById('previewModal'),
+          frameContainer: document.getElementById('previewFrameContainer'),
+          iframeElement: document.getElementById('previewIframe'),
+          loaderElement: document.getElementById('previewLoader'),
+          titleElement: document.getElementById('previewTitle'),
+          urlElement: document.getElementById('previewUrl'),
+          deviceDesktopBtn: document.getElementById('deviceDesktop'),
+          deviceTabletBtn: document.getElementById('deviceTablet'),
+          deviceMobileBtn: document.getElementById('deviceMobile'),
+          openTabBtn: document.getElementById('previewOpenTab'),
+          chooseBtn: document.getElementById('previewChoose'),
+          reloadBtn: document.getElementById('previewReload'),
+          closeButtons: [
+            document.getElementById('closePreviewModal'),
+            document.getElementById('closePreviewModalBottom')
+          ],
+          urlService: UrlService,
+          notificationService: this.services.notification,
+          onChoose: (rubro) => this.handleRubroSelect(rubro)
+        });
+      }
 
       // 4. Inicializar controlador de navegación (SRP)
       this.components.navigation = new NavigationController({
@@ -98,6 +125,24 @@
 
       // UrlService normaliza el dominio a 'https://dominio...' garantizando redirección absoluta correcta
       UrlService.navigate(rubro.url);
+    }
+
+    /**
+     * Abre la vista previa interactiva del sitio de la plantilla antes de elegir
+     * @param {Object} rubro
+     */
+    handleRubroPreview(rubro) {
+      if (!rubro || !rubro.url || !rubro.url.trim()) {
+        this.services.notification.show('Estamos trabajando en ello, próximamente disponible');
+        return;
+      }
+
+      if (this.components.previewModal) {
+        this.components.previewModal.open(rubro);
+      } else {
+        // Fallback si por alguna razón el modal no está disponible
+        UrlService.navigate(rubro.url);
+      }
     }
 
     /**
