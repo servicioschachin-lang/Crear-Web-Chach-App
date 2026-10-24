@@ -10,7 +10,7 @@
     { n: "Restaurante", icon: "utensils", url: "" },
     { n: "Cafetería y panadería", icon: "coffee", url: "" },
     { n: "Tienda de ropa", icon: "shirt", url: "" },
-    { n: "Salón de belleza", icon: "scissors", url: "" },
+    { n: "Salón de belleza", icon: "scissors", url: "https://spaweb.chach.app" },
     { n: "Clínica y salud", icon: "heart", url: "" },
     { n: "Abogados", icon: "scale", url: "" },
     { n: "Inmobiliaria", icon: "home", url: "" },
