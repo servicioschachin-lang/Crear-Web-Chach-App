@@ -152,6 +152,20 @@
     updateCatalogDisplay(query = '') {
       const filtered = this.services.catalog.filter(query);
       this.components.catalogView.render(filtered);
+      
+      // Actualizar contador de rubros dinámicamente
+      const totalRubros = this.services.catalog.getAll().length;
+      const rubrosCountEl = document.getElementById('rubros-count');
+      if (rubrosCountEl) {
+        rubrosCountEl.textContent = totalRubros;
+      }
+      
+      // Actualizar total de plantillas en despliegues aislados
+      const totalPlantillas = this.services.catalog.getTotalPlantillasCount();
+      const plantillasCountEl = document.getElementById('plantillas-count');
+      if (plantillasCountEl) {
+        plantillasCountEl.textContent = totalPlantillas;
+      }
     }
 
     /**

@@ -21,7 +21,7 @@
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 
   <!-- Hoja de estilos desacoplada (SRP) -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body class="blobs min-h-screen text-white flex flex-col">
 
@@ -139,6 +139,7 @@
       <div class="max-w-2xl mb-8">
         <h2 id="catalog-title" class="text-3xl md:text-4xl font-extrabold">Elige tu rubro</h2>
         <p class="mt-2 text-white/70">Selecciona el tipo de negocio para ver las plantillas disponibles.</p>
+        <p class="mt-1 text-white/60">Catálogo con <span id="rubros-count">50</span> rubros disponibles. <span id="plantillas-count">500</span> plantillas listas para personalizar y usar.</p>
       </div>
 
       <!-- Buscador -->
@@ -174,12 +175,49 @@
         </button>
       </div>
     </section>
+<!-- PASO 3: ONBOARDING CLIENTE -->
+    <section id="step3" class="hidden" aria-labelledby="onboarding-title">
+      <div class="max-w-2xl mx-auto py-12 text-center">
+        <span class="inline-flex items-center gap-2 glass rounded-full px-4 py-1.5 text-sm text-cyan-200">
+          <i data-i="sparkles"></i>Bienvenido al onboarding
+        </span>
+        <h2 id="onboarding-title" class="mt-6 text-3xl font-extrabold">Gracias por elegirnos</h2>
+        <p class="mt-4 text-white/70">Te guiaremos para configurar tu sitio web paso a paso. Selecciona tu rubro y personaliza las plantillas a tu gusto.</p>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8 max-w-xl mx-auto">
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">1. Header</h3>
+            <p class="text-white/60 text-sm">Menú de navegación, logo y enlaces principales en la parte superior de tu sitio.</p>
+          </div>
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">2. Hero</h3>
+            <p class="text-white/60 text-sm">La sección principal con título destacado, llamado a la acción y imagen representativa de tu negocio.</p>
+          </div>
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">3. Servicios</h3>
+            <p class="text-white/60 text-sm">Descripción de tus servicios o productos con íconos y explicaciones breves.</p>
+          </div>
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">4. Nosotros</h3>
+            <p class="text-white/60 text-sm">Historia de tu negocio, valores y qué te diferencia de la competencia.</p>
+          </div>
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">5. Galería</h3>
+            <p class="text-white/60 text-sm">Imágenes de tus trabajos, productos o realizados anteriores para mostrar calidad.</p>
+          </div>
+          <div class="glass p-4 rounded-xl text-left">
+            <h3 class="font-bold text-cyan-300 mb-2">6. Contacto</h3>
+            <p class="text-white/60 text-sm">Formulario de reserva, ubicación, teléfono y redes sociales para contactarte.</p>
+          </div>
+        </div>
+        <button id="startOnboarding" type="button" class="btn btn-primary mt-8 w-full">Comenzar onboarding</button>
+      </div>
+    </section>
   </main>
 
   <!-- PIE DE PÁGINA -->
   <footer class="glass rounded-none border-x-0 border-b-0 text-center text-sm text-white/60 py-6 flex flex-col items-center gap-3 mt-auto">
     <img src="logo-blanco.png" alt="Logo Creaweb Chach" class="h-10 w-auto opacity-80">
-    <span>© 2026 Creaweb Chach App · Todos los derechos reservados</span>
+    <span>© <span id="year">2026</span> Creaweb Chach App · Todos los derechos reservados</span>
   </footer>
 
   <!-- MODAL DE CONTACTO -->
@@ -247,8 +285,8 @@
                 En vivo
               </span>
             </div>
-            <div class="flex items-center gap-2 text-xs text-white/50 truncate">
-              <span class="flex items-center gap-1"><i data-i="lock"></i><span id="previewUrl">sitio</span></span>
+            <div class="hidden items-center gap-2 text-xs text-white/50 truncate">
+              <span class="hidden items-center gap-1"><i data-i="lock"></i><span id="previewUrl">sitio</span></span>
             </div>
           </div>
         </div>
@@ -327,17 +365,18 @@
   <aside id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass rounded-xl px-5 py-3 text-sm bg-slate-900/90 items-center gap-2 border border-white/20 shadow-xl" role="status" aria-live="polite"></aside>
 
   <!-- SCRIPTS MODULARES (SOLID & SRP) -->
-  <script src="js/config/constants.js"></script>
-  <script src="js/data/rubros.data.js"></script>
-  <script src="js/icons/icon-registry.js"></script>
-  <script src="js/services/url.service.js"></script>
-  <script src="js/services/notification.service.js"></script>
-  <script src="js/services/catalog.service.js"></script>
-  <script src="js/services/form.service.js"></script>
-  <script src="js/components/catalog.view.js"></script>
-  <script src="js/components/modal.controller.js"></script>
-  <script src="js/components/preview-modal.controller.js"></script>
-  <script src="js/components/navigation.controller.js"></script>
-  <script src="js/app.js"></script>
+  <script src="js/config/constants.js?v=4"></script>
+  <script src="js/data/rubros.data.js?v=4"></script>
+  <script src="js/icons/icon-registry.js?v=4"></script>
+  <script src="js/services/url.service.js?v=4"></script>
+  <script src="js/services/notification.service.js?v=4"></script>
+  <script src="js/services/catalog.service.js?v=4"></script>
+  <script src="js/services/form.service.js?v=4"></script>
+  <script src="js/components/catalog.view.js?v=4"></script>
+  <script src="js/components/modal.controller.js?v=4"></script>
+  <script src="js/components/preview-modal.controller.js?v=4"></script>
+  <script src="js/components/navigation.controller.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
