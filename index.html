@@ -35,8 +35,7 @@
         </a>
         <div class="hidden sm:flex items-center text-sm">
           <a class="nav-link" id="navHome" href="#inicio">Inicio</a>
-          <a class="nav-link" id="navTpl" href="#plantillas">Plantillas</a>
-          <button type="button" class="btn btn-outline !py-1.5 ml-2 text-sm" id="navContact">
+                    <button type="button" class="btn btn-outline !py-1.5 ml-2 text-sm" id="navContact">
             <i data-i="mail"></i>Contacto
           </button>
         </div>
@@ -49,8 +48,7 @@
       <!-- Menú Móvil Desplegable -->
       <div id="mobileMenu" class="hidden sm:hidden border-t border-white/10 px-5 py-3 flex-col gap-1 text-base">
         <a class="nav-link flex items-center gap-3 !py-3" id="mHome" href="#inicio"><i data-i="home"></i>Inicio</a>
-        <a class="nav-link flex items-center gap-3 !py-3" id="mTpl" href="#plantillas"><i data-i="layout"></i>Plantillas</a>
-        <button type="button" class="btn btn-primary mt-2" id="mContact"><i data-i="mail"></i>Contacto</button>
+                <button type="button" class="btn btn-primary mt-2" id="mContact"><i data-i="mail"></i>Contacto</button>
       </div>
     </nav>
   </header>
@@ -271,66 +269,12 @@
     <div class="glass rounded-2xl w-full max-w-7xl mx-auto flex flex-col flex-1 overflow-hidden shadow-2xl border border-white/20 bg-slate-950/95">
       
       <!-- BARRA SUPERIOR DEL MODAL -->
-      <div class="px-4 py-3 border-b border-white/10 flex flex-wrap items-center justify-between gap-3 bg-slate-900/80">
-        <!-- Info Rubro -->
-        <div class="flex items-center gap-3 min-w-0">
-          <span class="w-10 h-10 rounded-xl bg-[#0d6efd]/25 text-blue-300 grid place-items-center text-xl flex-shrink-0">
-            <i data-i="layout"></i>
-          </span>
-          <div class="min-w-0">
-            <div class="flex items-center gap-2">
-              <h3 id="previewTitle" class="text-base sm:text-lg font-bold text-white truncate">Vista previa de plantilla</h3>
-              <span class="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold bg-emerald-400/20 text-emerald-300 border border-emerald-400/30 px-2 py-0.5 rounded-full">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                En vivo
-              </span>
-            </div>
-            <div class="hidden items-center gap-2 text-xs text-white/50 truncate">
-              <span class="hidden items-center gap-1"><i data-i="lock"></i><span id="previewUrl">sitio</span></span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Conmutador de Dispositivos (Desktop, Tablet, Mobile) -->
-        <div class="hidden sm:flex items-center glass rounded-xl p-1 bg-black/40 border border-white/10 text-xs font-medium" role="group" aria-label="Cambiar vista de dispositivo">
-          <button id="deviceDesktop" type="button" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all bg-blue-600 text-white shadow-md" aria-pressed="true" title="Vista Escritorio">
-            <i data-i="monitor"></i>
-            <span class="hidden md:inline">Escritorio</span>
-          </button>
-          <button id="deviceTablet" type="button" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all text-white/60 hover:text-white" aria-pressed="false" title="Vista Tablet">
-            <i data-i="tablet"></i>
-            <span class="hidden md:inline">Tablet</span>
-          </button>
-          <button id="deviceMobile" type="button" class="px-3 py-1.5 rounded-lg flex items-center gap-1.5 transition-all text-white/60 hover:text-white" aria-pressed="false" title="Vista Móvil">
-            <i data-i="smartphone"></i>
-            <span class="hidden md:inline">Móvil</span>
-          </button>
-        </div>
-
-        <!-- Acciones Principales -->
-        <div class="flex items-center gap-2 ml-auto">
-          <!-- Recargar -->
-          <button id="previewReload" type="button" class="btn btn-outline !p-2 text-white/70 hover:text-white" title="Recargar vista previa" aria-label="Recargar vista previa">
-            <i data-i="rotate"></i>
-          </button>
-
-          <!-- Abrir en nueva pestaña -->
-          <button id="previewOpenTab" type="button" class="btn btn-outline !py-1.5 !px-3 text-xs flex items-center gap-1.5 text-cyan-200 border-cyan-400/30 hover:border-cyan-400" title="Abrir en pestaña nueva">
-            <i data-i="external"></i>
-            <span class="hidden sm:inline">Abrir pestaña</span>
-          </button>
-
-          <!-- Botón Elegir rubro (CTA) -->
-          <button id="previewChoose" type="button" class="btn btn-primary !py-1.5 !px-3.5 text-xs sm:text-sm font-semibold flex items-center gap-1.5 shadow-lg shadow-blue-500/20">
-            <span>Elegir rubro</span>
-            <i data-i="arrow-right"></i>
-          </button>
-
-          <!-- Botón Cerrar -->
-          <button id="closePreviewModal" type="button" class="text-white/60 hover:text-white p-1.5 rounded-lg hover:bg-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-400" aria-label="Cerrar vista previa">
-            <i data-i="x"></i>
-          </button>
-        </div>
+      <div class="px-3 py-2 border-b border-white/10 flex items-center justify-end gap-2 bg-slate-900/80">
+        <!-- Abrir en nueva pestaña -->
+        <button id="previewOpenTab" type="button" class="btn btn-outline !py-1.5 !px-3 text-xs flex items-center gap-1.5 text-cyan-200 border-cyan-400/30 hover:border-cyan-400" title="Abrir en pestaña nueva">
+          <i data-i="external"></i>
+          <span class="hidden sm:inline">Abrir pestaña</span>
+        </button>
       </div>
 
       <!-- ÁREA DE CONTENIDO PREVIEW (IFRAME & LOADER) -->

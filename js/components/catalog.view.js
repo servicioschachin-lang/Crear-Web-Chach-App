@@ -68,27 +68,14 @@
             </div>
 
             <div class="mt-auto pt-3 flex items-center gap-2 border-t border-white/10">
-              <button type="button" class="btn-preview btn btn-outline !py-1.5 !px-3 text-xs flex-1 flex items-center justify-center gap-1.5 hover:bg-white/15 hover:border-blue-400 text-blue-200" title="Ver vista previa interactiva">
-                ${eyeSvg}
-                <span>Vista previa</span>
-              </button>
-              <button type="button" class="btn-choose btn btn-primary !py-1.5 !px-3 text-xs flex items-center justify-center gap-1" title="Elegir e ir al sitio">
+              <button type="button" class="btn-choose btn btn-primary !py-1.5 !px-3 text-xs w-full flex items-center justify-center gap-1" title="Elegir e ir al sitio">
                 <span>Elegir</span>
                 ${arrowSvg}
               </button>
             </div>
           `;
 
-          // Botón directo para vista previa
-          const btnPreview = card.querySelector('.btn-preview');
-          if (btnPreview) {
-            btnPreview.addEventListener('click', (e) => {
-              e.stopPropagation();
-              this.onPreview(item);
-            });
-          }
-
-          // Botón directo para elegir
+          // Botón directo para elegir (enlace directo)
           const btnChoose = card.querySelector('.btn-choose');
           if (btnChoose) {
             btnChoose.addEventListener('click', (e) => {
@@ -97,9 +84,9 @@
             });
           }
 
-          // Clic en la tarjeta completa abre la vista previa antes de elegir
+          // Clic en la tarjeta completa va directo al enlace
           card.addEventListener('click', () => {
-            this.onPreview(item);
+            this.onSelect(item);
           });
 
           // Accesibilidad teclado
@@ -107,7 +94,7 @@
             if (e.key === 'Enter' || e.key === ' ') {
               if (e.target === card) {
                 e.preventDefault();
-                this.onPreview(item);
+                this.onSelect(item);
               }
             }
           });

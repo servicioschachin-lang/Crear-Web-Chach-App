@@ -8,6 +8,8 @@
 
   root.Creaweb.CONFIG = Object.freeze({
     links: {
+      // Enlace para la opción "Elegir plantilla" (vista previa desde inicio)
+      templates: "https://web.chach.app",
       // Enlace para la opción "Crear diseño propio desde 0"
       scratch: "",
       // Endpoint de Formspree para la recepción de solicitudes

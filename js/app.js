@@ -40,18 +40,7 @@
       this.services.catalog = new CatalogService(RUBROS_DATA);
       this.services.form = new FormService(CONFIG.links.formEndpoint);
 
-      // 3. Inicializar vista de catálogo (SRP / ISP)
-      const gridEl = document.getElementById('grid');
-      const emptyEl = document.getElementById('empty');
-      const searchInput = document.getElementById('search');
-
-      this.components.catalogView = new CatalogView({
-        gridElement: gridEl,
-        emptyElement: emptyEl,
-        iconRegistry: IconRegistry,
-        onSelect: (rubro) => this.handleRubroSelect(rubro),
-        onPreview: (rubro) => this.handleRubroPreview(rubro)
-      });
+      // 3. (Rubros/plantillas eliminados: la app se comunica solo por enlaces)
 
       // 4. Inicializar controlador del modal de vista previa interactiva (SRP / DIP)
       if (PreviewModalController) {
@@ -107,8 +96,7 @@
       // 6. Enlazar eventos de interacción
       this.bindInteractions();
 
-      // 7. Render inicial del catálogo
-      this.updateCatalogDisplay('');
+      // 7. (Sin catálogo de rubros: nada que renderizar)
     }
 
     /**
@@ -180,7 +168,13 @@
       const navTpl = document.getElementById('navTpl');
       const mTpl = document.getElementById('mTpl');
 
-      if (btnTpl) btnTpl.addEventListener('click', () => nav.goToStep(2));
+      if (btnTpl) btnTpl.addEventListener('click', () => {
+         if (CONFIG.links.templates && CONFIG.links.templates.trim()) {
+           this.handleRubroPreview({ n: 'Elegir plantilla', url: CONFIG.links.templates });
+         } else {
+           this.services.notification.show('Estamos trabajando en ello, próximamente disponible');
+         }
+       });
       if (navTpl) navTpl.addEventListener('click', (e) => { e.preventDefault(); nav.goToStep(2); });
       if (mTpl) mTpl.addEventListener('click', (e) => { e.preventDefault(); nav.goToStep(2); });
 
@@ -205,7 +199,8 @@
       if (btnScratch) {
         btnScratch.addEventListener('click', () => {
           if (CONFIG.links.scratch && CONFIG.links.scratch.trim()) {
-            UrlService.navigate(CONFIG.links.scratch);
+            // Abrir vista previa interactiva (igual que en plantillas) antes de ir al sitio
+            this.handleRubroPreview({ n: 'Crear diseño propio desde 0', url: CONFIG.links.scratch });
           } else {
             this.services.notification.show('Estamos trabajando en ello, próximamente disponible');
           }
