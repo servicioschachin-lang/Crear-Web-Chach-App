@@ -22,7 +22,6 @@
      * @param {HTMLElement} options.deviceDesktopBtn
      * @param {HTMLElement} options.deviceTabletBtn
      * @param {HTMLElement} options.deviceMobileBtn
-     * @param {HTMLElement} options.openTabBtn
      * @param {HTMLElement} options.chooseBtn
      * @param {HTMLElement} options.reloadBtn
      * @param {NodeList|Array<HTMLElement>} [options.closeButtons]
@@ -40,7 +39,6 @@
       deviceDesktopBtn,
       deviceTabletBtn,
       deviceMobileBtn,
-      openTabBtn,
       chooseBtn,
       reloadBtn,
       closeButtons = [],
@@ -59,7 +57,6 @@
       this.deviceTabletBtn = deviceTabletBtn;
       this.deviceMobileBtn = deviceMobileBtn;
 
-      this.openTabBtn = openTabBtn;
       this.chooseBtn = chooseBtn;
       this.reloadBtn = reloadBtn;
       this.closeBtns = Array.from(closeButtons || []);
@@ -107,15 +104,6 @@
       }
       if (this.deviceMobileBtn) {
         this.deviceMobileBtn.addEventListener('click', () => this.setDevice('mobile'));
-      }
-
-      // Abrir en nueva pestaña
-      if (this.openTabBtn) {
-        this.openTabBtn.addEventListener('click', () => {
-          if (this.currentRubro && this.currentRubro.url) {
-            this.urlService.navigate(this.currentRubro.url, { newTab: true });
-          }
-        });
       }
 
       // Confirmar selección del rubro

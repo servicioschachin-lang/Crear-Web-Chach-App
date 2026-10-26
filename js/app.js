@@ -54,12 +54,10 @@
           deviceDesktopBtn: document.getElementById('deviceDesktop'),
           deviceTabletBtn: document.getElementById('deviceTablet'),
           deviceMobileBtn: document.getElementById('deviceMobile'),
-          openTabBtn: document.getElementById('previewOpenTab'),
           chooseBtn: document.getElementById('previewChoose'),
           reloadBtn: document.getElementById('previewReload'),
           closeButtons: [
-            document.getElementById('closePreviewModal'),
-            document.getElementById('closePreviewModalBottom')
+            document.getElementById('closePreviewModal')
           ],
           urlService: UrlService,
           notificationService: this.services.notification,
@@ -207,11 +205,15 @@
         });
       }
 
-      // Búsqueda en tiempo real
+      // Búsqueda con debounce (evita disparar en cada tecla)
       const searchInput = document.getElementById('search');
       if (searchInput) {
+        let searchTimer = null;
         searchInput.addEventListener('input', (e) => {
-          this.updateCatalogDisplay(e.target.value);
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(() => {
+            this.updateCatalogDisplay(e.target.value);
+          }, 150);
         });
       }
 

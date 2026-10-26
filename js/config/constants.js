@@ -11,7 +11,7 @@
       // Enlace para la opción "Elegir plantilla" (vista previa desde inicio)
       templates: "https://web.chach.app",
       // Enlace para la opción "Crear diseño propio desde 0"
-      scratch: "",
+      scratch: "https://crearweb.chach.app",
       // Endpoint de Formspree para la recepción de solicitudes
       formEndpoint: "https://formspree.io/f/xrengvqb"
     },

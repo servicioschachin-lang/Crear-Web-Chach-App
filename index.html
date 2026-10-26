@@ -17,11 +17,11 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="logo-blanco.png">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-
   <!-- Hoja de estilos desacoplada (SRP) -->
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Tailwind CSS CDN (defer para no bloquear renderizado) -->
+  <script src="https://cdn.tailwindcss.com/3.4.17" defer></script>
 </head>
 <body class="blobs min-h-screen text-white flex flex-col">
 
@@ -265,20 +265,11 @@
   </div>
 
   <!-- MODAL DE VISTA PREVIA INTERACTIVA (PREVIEW MODAL) -->
-  <div id="previewModal" class="hidden fixed inset-0 z-50 flex flex-col p-2 sm:p-4 md:p-6 bg-black/80 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
-    <div class="glass rounded-2xl w-full max-w-7xl mx-auto flex flex-col flex-1 overflow-hidden shadow-2xl border border-white/20 bg-slate-950/95">
+  <div id="previewModal" class="hidden fixed inset-0 z-50 flex flex-col bg-black/80 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="previewTitle">
+    <div class="glass w-full h-full flex flex-col flex-1 overflow-hidden bg-slate-950/95">
       
-      <!-- BARRA SUPERIOR DEL MODAL -->
-      <div class="px-3 py-2 border-b border-white/10 flex items-center justify-end gap-2 bg-slate-900/80">
-        <!-- Abrir en nueva pestaña -->
-        <button id="previewOpenTab" type="button" class="btn btn-outline !py-1.5 !px-3 text-xs flex items-center gap-1.5 text-cyan-200 border-cyan-400/30 hover:border-cyan-400" title="Abrir en pestaña nueva">
-          <i data-i="external"></i>
-          <span class="hidden sm:inline">Abrir pestaña</span>
-        </button>
-      </div>
-
       <!-- ÁREA DE CONTENIDO PREVIEW (IFRAME & LOADER) -->
-      <div class="relative flex-1 bg-slate-950/90 overflow-hidden flex items-center justify-center p-2 sm:p-4">
+      <div class="relative flex-1 bg-slate-950/90 overflow-hidden flex items-center justify-center">
         
         <!-- Indicador de Carga -->
         <div id="previewLoader" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-slate-950/85 backdrop-blur-sm gap-3 text-sm text-cyan-200">
@@ -287,19 +278,10 @@
         </div>
 
         <!-- Contenedor del Frame (Ajustable dinámicamente) -->
-        <div id="previewFrameContainer" class="w-full h-full max-w-full transition-all duration-300 ease-out flex flex-col bg-slate-900 overflow-hidden rounded-xl border border-white/10 shadow-2xl relative">
+        <div id="previewFrameContainer" class="w-full h-full transition-all duration-300 ease-out flex flex-col bg-slate-900 overflow-hidden relative">
           <iframe id="previewIframe" src="about:blank" class="w-full h-full border-0 bg-white" title="Vista previa de plantilla" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
         </div>
 
-      </div>
-
-      <!-- BARRA INFERIOR DE AYUDA -->
-      <div class="px-4 py-2 border-t border-white/10 bg-slate-900/90 text-xs text-white/60 flex items-center justify-between">
-        <span class="flex items-center gap-1.5">
-          <i data-i="info"></i>
-          <span>Interactúa con la plantilla para explorar secciones, animaciones y diseño antes de seleccionarla.</span>
-        </span>
-        <button type="button" id="closePreviewModalBottom" class="text-white/50 hover:text-white underline ml-2">Volver al catálogo</button>
       </div>
 
     </div>
@@ -309,18 +291,18 @@
   <aside id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass rounded-xl px-5 py-3 text-sm bg-slate-900/90 items-center gap-2 border border-white/20 shadow-xl" role="status" aria-live="polite"></aside>
 
   <!-- SCRIPTS MODULARES (SOLID & SRP) -->
-  <script src="js/config/constants.js?v=4"></script>
-  <script src="js/data/rubros.data.js?v=4"></script>
-  <script src="js/icons/icon-registry.js?v=4"></script>
-  <script src="js/services/url.service.js?v=4"></script>
-  <script src="js/services/notification.service.js?v=4"></script>
-  <script src="js/services/catalog.service.js?v=4"></script>
-  <script src="js/services/form.service.js?v=4"></script>
-  <script src="js/components/catalog.view.js?v=4"></script>
-  <script src="js/components/modal.controller.js?v=4"></script>
-  <script src="js/components/preview-modal.controller.js?v=4"></script>
-  <script src="js/components/navigation.controller.js?v=4"></script>
-  <script src="js/app.js?v=4"></script>
+  <script src="js/config/constants.js" defer></script>
+  <script src="js/data/rubros.data.js" defer></script>
+  <script src="js/icons/icon-registry.js" defer></script>
+  <script src="js/services/url.service.js" defer></script>
+  <script src="js/services/notification.service.js" defer></script>
+  <script src="js/services/catalog.service.js" defer></script>
+  <script src="js/services/form.service.js" defer></script>
+  <script src="js/components/catalog.view.js" defer></script>
+  <script src="js/components/modal.controller.js" defer></script>
+  <script src="js/components/preview-modal.controller.js" defer></script>
+  <script src="js/components/navigation.controller.js" defer></script>
+  <script src="js/app.js" defer></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -73,8 +73,7 @@
         this.step1El.classList.toggle('hidden', stepNumber !== 1);
         if (stepNumber === 1) {
           this.step1El.classList.remove('fade');
-          void this.step1El.offsetWidth; // Reflow for restart animation
-          this.step1El.classList.add('fade');
+          requestAnimationFrame(() => this.step1El.classList.add('fade'));
         }
       }
 
@@ -82,8 +81,7 @@
         this.step2El.classList.toggle('hidden', stepNumber !== 2);
         if (stepNumber === 2) {
           this.step2El.classList.remove('fade');
-          void this.step2El.offsetWidth;
-          this.step2El.classList.add('fade');
+          requestAnimationFrame(() => this.step2El.classList.add('fade'));
         }
       }
 
